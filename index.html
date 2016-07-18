@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="appModule">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/ionic.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<script src="js/angular/angular.js"></script>
+<script src="js/angular-ui/angular-ui-router.js"></script>
+<body>
+<!--默认的视图-->
+<div class="bar bar-header bar-calm">
+    <a class="button icon-left ion-chevron-left button-clear swiper-button-white" ui-sref="home"></a>
+    <h1 class="title">小小秘密商城</h1>
+    <a class="button button-outline icon-right ion-navicon button-positive" style="color: white" ui-sref="rMenu">菜单</a>
+
+    <!--<ion-side-menus>-->
+        <!--<ion-side-menu side="right" ng-controller="ContentController">-->
+        <!--</ion-side-menu>-->
+    <!--</ion-side-menus>-->
+</div>
+<div ui-view></div>
+<script>
+    var app = angular.module('appModule',['ui.router']);
+    app.config(function ($stateProvider,$urlRouterProvider) {
+        $stateProvider.state('home',{
+            url:'/home',
+            views:{
+                '':{
+                    templateUrl:'tmpl/home.html'
+                }
+            }
+        }).state('home.mylove',{
+            url:'/home',
+            views:{
+                '':{
+                    templateUrl:'tmpl/1mylove.html'
+                }
+            }
+        }).state('home.car',{
+            url:'/search',
+            views:{
+                '':{
+                    templateUrl:'tmpl/2car.html'
+                }
+            }
+        }).state('home.search',{
+            url:'/car',
+            views:{
+                '':{
+                    templateUrl:'tmpl/3search.html'
+                }
+            }
+        }).state('home.albums',{
+            url:'/albums',
+            views:{
+                '':{
+                    templateUrl:'tmpl/4albums.html'
+                }
+            }
+        }).state('rMenu',{
+            url:'/rMenu',
+            views:{
+                '':{
+                    templateUrl:'tmpl/rMenu.html'
+                }
+            }
+        });
+        $urlRouterProvider.otherwise('home')
+    })
+</script>
+</body>
+</html>
